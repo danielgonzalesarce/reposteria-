@@ -34,70 +34,70 @@ const ProductDetailPage: React.FC = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-[#0D0D0D] text-[#F5E6D3]"
     >
-      <div className="container mx-auto px-12 md:px-24 pt-40 pb-20">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 pt-32 md:pt-40 pb-20">
         {/* Enlace de volver */}
-        <Link to="/productos" className="inline-flex items-center gap-2 text-[#C8A96A] text-[10px] uppercase tracking-[0.3em] font-bold mb-16 hover:gap-4 transition-all">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
+        <Link to="/productos" className="inline-flex items-center gap-3 text-[#C8A96A] text-[9px] uppercase tracking-[0.4em] font-bold mb-10 md:mb-16 hover:gap-5 transition-all group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256">
             <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
           </svg>
-          Volver a la colección
+          <span className="opacity-80 group-hover:opacity-100">Regresar</span>
         </Link>
 
         {/* Hero Product Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24 md:mb-32">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="relative rounded-[40px] overflow-hidden aspect-square lg:aspect-[4/5]"
+            className="relative rounded-[40px] overflow-hidden aspect-square shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
           >
             <img 
               src={product.imageUrl} 
               alt={product.name} 
-              className="w-full h-full object-cover shadow-2xl"
+              className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col h-full justify-center"
+            className="flex flex-col"
           >
-            <p className="text-[#C8A96A] text-xs uppercase tracking-[0.5em] font-bold mb-6">{product.category}</p>
-            <h1 className="text-7xl md:text-8xl font-condensed leading-[0.9] mb-8 uppercase">{product.name}</h1>
-            <p className="text-3xl font-light text-[#C8A96A] mb-10 tracking-wider">S/ {product.price}</p>
+            <p className="text-[#C8A96A] text-[10px] uppercase tracking-[0.6em] font-bold mb-6">{product.category}</p>
+            <h1 className="text-6xl md:text-8xl font-condensed leading-[0.9] mb-8 uppercase tracking-tighter">{product.name}</h1>
+            <p className="text-2xl md:text-3xl font-light text-[#C8A96A] mb-10 tracking-widest">S/ {product.price}</p>
             
-            <p className="text-[#F5E6D3]/70 text-lg leading-relaxed font-light mb-12 max-w-xl">
+            <p className="text-[#F5E6D3]/70 text-base md:text-lg leading-relaxed font-light mb-12 max-w-xl">
               {product.fullDescription}
             </p>
 
-            <div className="max-w-md">
+            <div className="max-w-md w-full">
               <WhatsAppButton productName={product.name} />
             </div>
           </motion.div>
         </div>
 
         {/* Detail Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-40">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-32 md:mb-40">
           {/* Ingredientes */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white/5 border border-white/5 rounded-[40px] p-12"
+            className="bg-white/5 border border-white/5 rounded-[40px] p-8 md:p-12"
           >
-            <h3 className="text-4xl font-condensed text-[#F5E6D3] mb-12 uppercase tracking-widest">Ingredientes</h3>
-            <ul className="space-y-6">
+            <h3 className="text-3xl md:text-4xl font-condensed text-[#F5E6D3] mb-10 uppercase tracking-widest">Ingredientes</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {product.ingredients?.map((ing, idx) => (
-                <li key={idx} className="flex items-center gap-6">
-                  <div className="text-[#C8A96A]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <li key={idx} className="flex items-start gap-5">
+                  <div className="text-[#C8A96A] mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-lg font-light text-[#F5E6D3]/80">{ing}</span>
+                  <span className="text-base md:text-lg font-light text-[#F5E6D3]/70 leading-tight">{ing}</span>
                 </li>
               ))}
             </ul>
@@ -109,16 +109,16 @@ const ProductDetailPage: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="bg-white/5 border border-white/5 rounded-[40px] p-12"
+            className="bg-white/5 border border-white/5 rounded-[40px] p-8 md:p-12"
           >
-            <h3 className="text-4xl font-condensed text-[#F5E6D3] mb-12 uppercase tracking-widest">Cómo lo preparamos</h3>
-            <div className="space-y-10">
+            <h3 className="text-3xl md:text-4xl font-condensed text-[#F5E6D3] mb-10 uppercase tracking-widest">Artesanía</h3>
+            <div className="space-y-8 md:space-y-10">
               {product.preparationSteps?.map((step, idx) => (
-                <div key={idx} className="flex gap-8 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#C8A96A] text-[#0D0D0D] rounded-full flex items-center justify-center font-condensed text-xl">
+                <div key={idx} className="flex gap-6 md:gap-8 items-start">
+                  <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-[#C8A96A] text-[#0D0D0D] rounded-full flex items-center justify-center font-condensed text-lg md:text-xl">
                     {idx + 1}
                   </div>
-                  <p className="text-lg font-light text-[#F5E6D3]/80 pt-2">{step}</p>
+                  <p className="text-base md:text-lg font-light text-[#F5E6D3]/70 pt-1.5 leading-snug">{step}</p>
                 </div>
               ))}
             </div>
@@ -126,58 +126,61 @@ const ProductDetailPage: React.FC = () => {
         </div>
 
         {/* Related Products */}
-        <section className="pt-20">
-          <h2 className="text-5xl md:text-6xl font-condensed text-[#F5E6D3] mb-16 uppercase tracking-tighter">
-            TAMBIÉN TE <span className="text-[#C8A96A]">PUEDE GUSTAR</span>
+        <section className="pt-20 border-t border-white/5">
+          <h2 className="text-4xl md:text-6xl font-condensed text-[#F5E6D3] mb-12 md:mb-16 uppercase tracking-tighter">
+            COLECCIONES <span className="text-[#C8A96A]">SUGERIDAS</span>
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {relatedProducts.map((p) => (
               <Link key={p.id} to={`/productos/${p.id}`} className="group block">
-                <div className="relative aspect-square rounded-[30px] overflow-hidden mb-6">
+                <div className="relative aspect-[4/5] rounded-[30px] overflow-hidden mb-6 shadow-xl">
                   <img 
                     src={p.imageUrl} 
                     alt={p.name} 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                    className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  <div className="absolute bottom-6 left-6 right-6 translate-y-2 group-hover:translate-y-0 transition-transform">
+                     <p className="text-[#C8A96A] text-[9px] uppercase tracking-[0.4em] font-bold mb-2">Ver Detalle</p>
+                  </div>
                 </div>
-                <h4 className="text-xl font-condensed text-[#F5E6D3] mb-2 uppercase tracking-widest group-hover:text-[#C8A96A] transition-colors">
+                <h4 className="text-xl md:text-2xl font-condensed text-[#F5E6D3] mb-2 uppercase tracking-widest group-hover:text-[#C8A96A] transition-colors">
                   {p.name}
                 </h4>
-                <p className="text-sm font-light text-[#C8A96A] uppercase tracking-widest">S/ {p.price}</p>
+                <p className="text-xs font-light text-[#C8A96A] uppercase tracking-[0.3em]">S/ {p.price}</p>
               </Link>
             ))}
           </div>
         </section>
       </div>
 
-      {/* Reutilizar sección Newsletter */}
-      <section className="py-40 px-12 md:px-24 bg-[#0D0D0D] text-center border-t border-white/5">
+      {/* Newsletter Section */}
+      <section className="py-24 md:py-40 px-6 md:px-12 lg:px-24 bg-[#0D0D0D] text-center border-t border-white/5">
         <div className="container mx-auto max-w-4xl">
           <motion.div
-             initial={{ opacity: 0, scale: 0.9 }}
+             initial={{ opacity: 0, scale: 0.95 }}
              whileInView={{ opacity: 1, scale: 1 }}
              viewport={{ once: true }}
           >
-            <h2 className="text-7xl md:text-9xl font-condensed text-[#F5E6D3] mb-8 tracking-tighter uppercase">
-              MANTENTE <span className="text-[#C8A96A]">CONECTADO</span>
+            <h2 className="text-6xl md:text-9xl font-condensed text-[#F5E6D3] mb-6 md:mb-8 tracking-tighter uppercase leading-none">
+              MANTENTE <span className="text-[#C8A96A]">CERCA</span>
             </h2>
-            <p className="text-[#F5E6D3]/60 text-lg mb-12 uppercase tracking-[0.3em] font-light">
-              Suscríbete para recibir ofertas exclusivas y novedades de nuevas colecciones.
+            <p className="text-[#F5E6D3]/60 text-sm md:text-lg mb-10 md:mb-12 uppercase tracking-[0.2em] font-light">
+              Únete a nuestra lista de cortesía para eventos privados.
             </p>
             
-            <form className="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto" onSubmit={(e) => e.preventDefault()}>
               <input 
                 type="email" 
-                placeholder="Tu correo electrónico" 
-                className="flex-grow bg-[#151515] border border-white/10 rounded-full px-10 py-6 text-[#F5E6D3] focus:outline-none focus:border-[#C8A96A]/50 transition-all text-sm uppercase tracking-widest"
+                placeholder="Tu email" 
+                className="flex-grow bg-[#151515] border border-white/10 rounded-full px-8 py-5 text-[#F5E6D3] focus:outline-none focus:border-[#C8A96A]/50 transition-all text-xs uppercase tracking-widest"
               />
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-12 py-6 bg-[#C8A96A] text-[#0D0D0D] uppercase tracking-[0.3em] font-bold rounded-full text-xs shadow-xl"
+                className="w-full sm:w-auto px-10 py-5 bg-[#C8A96A] text-[#0D0D0D] uppercase tracking-[0.2em] font-bold rounded-full text-xs shadow-xl"
               >
-                UNIRSE
+                Ingresar
               </motion.button>
             </form>
           </motion.div>
