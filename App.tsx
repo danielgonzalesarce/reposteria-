@@ -2,22 +2,23 @@
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Home from './presentation/pages/Home';
-import ProductsPage from './presentation/pages/ProductsPage';
-import ProductDetailPage from './presentation/pages/ProductDetailPage';
-import AboutPage from './presentation/pages/AboutPage';
-import ContactPage from './presentation/pages/ContactPage';
-import CustomOrderPage from './presentation/pages/CustomOrderPage';
-import NotFoundPage from './presentation/pages/NotFoundPage';
-import Navbar from './presentation/components/Navbar';
-import Footer from './presentation/components/Footer';
-import WhatsAppButton from './presentation/components/WhatsAppButton';
+
+import Home from './presentation/pages/Home.tsx';
+import ProductsPage from './presentation/pages/ProductsPage.tsx';
+import ProductDetailPage from './presentation/pages/ProductDetailPage.tsx';
+import AboutPage from './presentation/pages/AboutPage.tsx';
+import ContactPage from './presentation/pages/ContactPage.tsx';
+import CustomOrderPage from './presentation/pages/CustomOrderPage.tsx';
+import NotFoundPage from './presentation/pages/NotFoundPage.tsx';
+import Navbar from './presentation/components/Navbar.tsx';
+import Footer from './presentation/components/Footer.tsx';
+import WhatsAppButton from './presentation/components/WhatsAppButton.tsx';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen selection:bg-[#C8A96A] selection:text-[#0D0D0D] flex flex-col">
+    <div className="min-h-screen selection:bg-[#C8A96A] selection:text-[#0D0D0D] flex flex-col bg-[#0D0D0D]">
       <Navbar />
       <div className="flex-grow">
         <AnimatePresence mode="wait">
@@ -33,7 +34,6 @@ const AppContent: React.FC = () => {
         </AnimatePresence>
       </div>
       <Footer />
-      {/* Botón flotante global para información */}
       <WhatsAppButton productName="Información General" variant="floating" />
     </div>
   );
