@@ -9,10 +9,12 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<number | null>(null);
 
+  // Cerrar menú al cambiar de ruta
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  // Bloquear scroll cuando el menú está abierto
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -68,22 +70,22 @@ const Navbar: React.FC = () => {
     <nav className="fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-6 md:py-8 transition-all duration-500 bg-gradient-to-b from-[#0D0D0D] to-transparent">
       <div className="container mx-auto flex justify-between items-center relative z-[110]">
         
-        {/* LOGO - Diseño Original */}
+        {/* LOGO IZQUIERDA */}
         <Link to="/" className="group flex flex-col items-start outline-none">
-          <span className="text-xl md:text-2xl font-condensed tracking-[0.2em] leading-none text-[#F5E6D3] group-hover:text-[#C8A96A] transition-colors">
+          <span className={`text-xl md:text-2xl font-condensed tracking-[0.2em] leading-none transition-colors ${isOpen ? 'text-[#F5E6D3]' : 'text-[#F5E6D3] group-hover:text-[#C8A96A]'}`}>
             MAISON <span className="text-[#C8A96A]">D'OR</span>
           </span>
           <span className="text-[8px] uppercase tracking-[0.5em] mt-1 font-bold opacity-40">Haute Pâtisserie</span>
         </Link>
         
-        {/* DESKTOP LINKS - Diseño Original Restaurado */}
+        {/* NAVEGACIÓN DESKTOP (Minimalista - Como estaba antes) */}
         <div className="hidden lg:flex gap-12 items-center">
           {navLinks.filter(l => l.name !== 'Inicio').map((link) => (
             <Link 
               key={link.path}
               to={link.path} 
               className={`text-[10px] uppercase tracking-[0.4em] transition-all font-bold relative group ${
-                location.pathname === link.path ? 'text-[#C8A96A]' : 'text-[#F5E6D3]/60 hover:text-[#C8A96A]'
+                location.pathname === link.path ? 'text-[#C8A96A]' : 'text-[#F5E6D3]/60 hover:text-[#F5E6D3]'
               }`}
             >
               {link.name}
@@ -92,9 +94,9 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        {/* ICONS & HAMBURGER */}
+        {/* ICONOS Y TRIGGER HAMBURGUESA */}
         <div className="flex items-center gap-4 md:gap-8">
-          {/* Bolsa - Diseño Original */}
+          {/* Bolsa Icono */}
           <button 
             onClick={() => navigate('/productos')}
             className="w-10 h-10 border border-[#C8A96A]/20 rounded-full flex items-center justify-center text-[#F5E6D3] hover:bg-[#C8A96A] hover:text-[#0D0D0D] transition-all"
@@ -104,15 +106,13 @@ const Navbar: React.FC = () => {
             </svg>
           </button>
 
-          {/* Hamburger - Solo visible en móvil/tablet o como trigger del overlay mejorado */}
+          {/* Hamburguesa Trigger */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center group outline-none lg:ml-2"
+            className="flex items-center group outline-none"
           >
             <div className="relative w-10 h-10 flex flex-col items-center justify-center">
-              <motion.div 
-                className={`absolute inset-0 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ${isOpen ? 'bg-white/5' : 'bg-[#C8A96A]/10'}`}
-              />
+              <motion.div className={`absolute inset-0 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ${isOpen ? 'bg-white/5' : 'bg-[#C8A96A]/10'}`} />
               <div className="relative w-6 h-3 flex flex-col justify-between items-end">
                 <motion.span 
                   animate={isOpen ? { rotate: 45, y: 5.5, width: '100%', backgroundColor: '#F5E6D3' } : { rotate: 0, y: 0, width: '100%', backgroundColor: '#C8A96A' }}
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* OVERLAY MEJORADO - Se mantiene para móvil y cuando se abre el menú */}
+      {/* OVERLAY EDITORIAL (Se activa con el botón de hamburguesa) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-[#0D0D0D] z-[105] flex overflow-hidden"
           >
-            {/* Background Image Preview */}
+            {/* Imagen de fondo dinámica en hover */}
             <div className="hidden lg:block absolute inset-0 z-0">
               <AnimatePresence mode="wait">
                 <motion.img
@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
 
             <div className="container mx-auto px-6 md:px-12 lg:px-24 flex flex-col lg:flex-row justify-center lg:justify-between items-center lg:items-end pb-12 lg:pb-24 relative z-10 w-full h-full">
               
-              {/* Main Navigation List */}
+              {/* Enlaces Principales con Animación de Máscara */}
               <motion.div 
                 variants={menuVariants}
                 initial="closed"
@@ -183,7 +183,7 @@ const Navbar: React.FC = () => {
                 ))}
               </motion.div>
 
-              {/* Sidebar Info */}
+              {/* Información Lateral / Socials */}
               <div className="flex flex-col items-center lg:items-end gap-12 lg:gap-16 w-full lg:w-auto mt-12 lg:mt-0">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -191,7 +191,7 @@ const Navbar: React.FC = () => {
                   transition={{ delay: 0.8 }}
                   className="hidden md:flex flex-col items-center lg:items-end text-center lg:text-right"
                 >
-                  <p className="text-[#C8A96A] text-[9px] uppercase tracking-[0.5em] font-bold mb-4">Ubicación Actual</p>
+                  <p className="text-[#C8A96A] text-[9px] uppercase tracking-[0.5em] font-bold mb-4">Maison D'Or</p>
                   <p className="text-[#F5E6D3]/40 text-xs uppercase tracking-widest leading-relaxed">
                     Lima, San Isidro<br/>
                     Av. Principal 123<br/>
@@ -212,7 +212,7 @@ const Navbar: React.FC = () => {
               </div>
             </div>
             
-            {/* Massive Ghost Text */}
+            {/* Texto fantasma gigante de fondo */}
             <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none opacity-[0.03] select-none">
               <span className="text-[30vw] font-condensed leading-none tracking-tighter whitespace-nowrap block translate-y-1/4">
                 PÂTISSERIE ARTISANALE

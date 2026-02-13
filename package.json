@@ -3,10 +3,11 @@
   "name": "maison-dor-patisserie",
   "version": "1.0.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://danielgonzalesarce.github.io/reposteria-/",
   "scripts": {
     "start": "npx serve .",
-    "deploy": "gh-pages -d ."
+    "predeploy": "echo 'Preparando despliegue...'",
+    "deploy": "gh-pages -d . -e ."
   },
   "dependencies": {
     "gh-pages": "^6.1.1"
