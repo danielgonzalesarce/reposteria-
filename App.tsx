@@ -40,7 +40,7 @@ const AppContent: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  // HashRouter no requiere basename para funcionar correctamente en subcarpetas de GH Pages
+  // HashRouter es la forma más robusta de manejar rutas en GitHub Pages.
   return (
     <HashRouter>
       <AppContent />
