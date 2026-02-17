@@ -6,7 +6,6 @@
   "homepage": "https://danielgonzalesarce.github.io/reposteria-/",
   "scripts": {
     "start": "npx serve .",
-    "predeploy": "echo 'Preparando despliegue...'",
     "deploy": "gh-pages -d . -e ."
   },
   "dependencies": {

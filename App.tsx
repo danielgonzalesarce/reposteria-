@@ -40,6 +40,7 @@ const AppContent: React.FC = () => {
 };
 
 const App: React.FC = () => {
+  // HashRouter no requiere basename para funcionar correctamente en subcarpetas de GH Pages
   return (
     <HashRouter>
       <AppContent />
