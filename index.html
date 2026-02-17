@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Babel para compilar TSX en el navegador (Crucial para GitHub Pages sin build) -->
+    <!-- Babel Standalone para compilar TSX en el navegador -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
@@ -48,7 +48,7 @@
       }
     </style>
 
-    <!-- Import Map unificado: Forzamos a que todas las librerías usen EXACTAMENTE la misma versión de React -->
+    <!-- Import Map: Forzamos a todas las librerías a compartir la misma instancia de React -->
     <script type="importmap">
 {
   "imports": {
@@ -63,7 +63,7 @@
 }
 </script>
     
-    <!-- El script principal ahora llama a index.tsx, procesado por Babel -->
+    <!-- Cargamos index.tsx como un módulo de Babel -->
     <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
   </head>
   <body>
