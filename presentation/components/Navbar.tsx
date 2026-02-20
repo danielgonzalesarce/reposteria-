@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
           {/* Hamburguesa Trigger */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center group outline-none"
+            className="lg:hidden flex items-center group outline-none"
           >
             <div className="relative w-10 h-10 flex flex-col items-center justify-center">
               <motion.div className={`absolute inset-0 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500 ${isOpen ? 'bg-white/5' : 'bg-[#C8A96A]/10'}`} />

@@ -20,9 +20,9 @@ const Footer: React.FC = () => {
             <h4 className="text-[11px] uppercase tracking-[0.4em] text-[#C8A96A] mb-10 font-bold">TIENDA</h4>
             <ul className="flex flex-col gap-6">
               <li><Link to="/productos" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Colección</Link></li>
-              <li><Link to="/productos" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Nuevos Ingresos</Link></li>
-              <li><Link to="/productos" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Más vendidos</Link></li>
-              <li><Link to="/productos" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Juegos de regalo</Link></li>
+              <li><Link to="/nuevos-ingresos" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Nuevos Ingresos</Link></li>
+              <li><Link to="/mas-vendidos" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Más vendidos</Link></li>
+              <li><Link to="/juegos-regalo" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Juegos de regalo</Link></li>
             </ul>
           </div>
 
@@ -30,9 +30,9 @@ const Footer: React.FC = () => {
             <h4 className="text-[11px] uppercase tracking-[0.4em] text-[#C8A96A] mb-10 font-bold">ACERCA DE</h4>
             <ul className="flex flex-col gap-6">
               <li><Link to="/nosotros" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Nuestra Historia</Link></li>
-              <li><Link to="/nosotros" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Artesanía</Link></li>
-              <li><Link to="/nosotros" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Sostenibilidad</Link></li>
-              <li><Link to="/nosotros" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Trabaja con Nosotros</Link></li>
+              <li><Link to="/artesania" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Artesanía</Link></li>
+              <li><Link to="/sostenibilidad" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Sostenibilidad</Link></li>
+              <li><Link to="/trabaja-con-nosotros" className="text-[12px] uppercase tracking-widest text-[#F5E6D3]/60 hover:text-[#C8A96A] transition-colors">Trabaja con Nosotros</Link></li>
             </ul>
           </div>
 
