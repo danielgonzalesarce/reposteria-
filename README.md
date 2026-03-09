@@ -1,20 +1,32 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Maison d'Or Patisserie
 
-# Run and deploy your AI Studio app
+Una aplicación web para la pastelería Maison d'Or, construida con React, TypeScript y Vite.
 
-This contains everything you need to run your app locally.
+## Ejecutar Localmente
 
-View your app in AI Studio: https://ai.studio/apps/cafa37ba-0f47-4a93-a1ed-4fc74b51fd8a
+**Prerrequisitos:** Node.js
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
+1. Instala las dependencias:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Ejecuta la aplicación:
    `npm run dev`
+
+## Despliegue en GitHub Pages
+
+La aplicación está configurada para desplegarse automáticamente en GitHub Pages usando GitHub Actions.
+
+### Pasos para el despliegue:
+
+1. Sube este código a un repositorio de GitHub llamado `reposteria-`.
+2. Ve a la configuración del repositorio (Settings > Pages).
+3. En "Source", selecciona "Deploy from a branch".
+4. Selecciona la rama `gh-pages` y la carpeta `/ (root)`.
+5. Cada push a la rama `main` activará el despliegue automático.
+
+### Despliegue manual (opcional):
+
+Si prefieres desplegar manualmente:
+1. Construye la aplicación: `npm run build`
+2. Despliega: `npm run deploy`
+
+La aplicación estará disponible en: https://danielgonzalesarce.github.io/reposteria-/
