@@ -25,6 +25,65 @@ import ShippingPage from './presentation/pages/ShippingPage';
 import ReturnsPage from './presentation/pages/ReturnsPage';
 import FAQPage from './presentation/pages/FAQPage';
 
+// Error Boundary Component
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error?: Error }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{
+          color: 'white',
+          background: '#0D0D0D',
+          padding: '20px',
+          fontFamily: 'Arial, sans-serif',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <h1 style={{ color: '#C8A96A', marginBottom: '20px' }}>Maison d'Or Patisserie</h1>
+          <p>Ha ocurrido un error al cargar la aplicación.</p>
+          <p style={{ color: '#F5E6D3', fontSize: '14px', marginTop: '10px' }}>
+            Error: {this.state.error?.message}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            style={{
+              background: '#C8A96A',
+              color: '#0D0D0D',
+              border: 'none',
+              padding: '10px 20px',
+              marginTop: '20px',
+              cursor: 'pointer',
+              borderRadius: '5px'
+            }}
+          >
+            Recargar página
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
 const AppContent: React.FC = () => {
   const location = useLocation();
 
@@ -65,9 +124,11 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   // HashRouter es la forma más robusta de manejar rutas en GitHub Pages.
   return (
-    <HashRouter>
-      <AppContent />
-    </HashRouter>
+    <ErrorBoundary>
+      <HashRouter>
+        <AppContent />
+      </HashRouter>
+    </ErrorBoundary>
   );
 };
 
