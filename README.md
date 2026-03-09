@@ -11,22 +11,19 @@ Una aplicación web para la pastelería Maison d'Or, construida con React, TypeS
 2. Ejecuta la aplicación:
    `npm run dev`
 
-## Despliegue en GitHub Pages
+## Despliegue Automático en GitHub Pages
 
-La aplicación está configurada para desplegarse automáticamente en GitHub Pages usando GitHub Actions.
+La aplicación se despliega automáticamente en GitHub Pages cada vez que se hace push a la rama `main`.
 
-### Pasos para el despliegue:
+### Configuración Inicial:
 
-1. Sube este código a un repositorio de GitHub llamado `reposteria-`.
-2. Ve a la configuración del repositorio (Settings > Pages).
-3. En "Source", selecciona "Deploy from a branch".
-4. Selecciona la rama `gh-pages` y la carpeta `/ (root)`.
-5. Cada push a la rama `main` activará el despliegue automático.
+1. Ve a **Settings > Pages** en tu repositorio de GitHub
+2. En "Source", selecciona **"GitHub Actions"**
+3. El workflow se ejecutará automáticamente en cada push
 
-### Despliegue manual (opcional):
+### Verificación:
 
-Si prefieres desplegar manualmente:
-1. Construye la aplicación: `npm run build`
-2. Despliega: `npm run deploy`
+- Revisa la pestaña **"Actions"** para ver el progreso del despliegue
+- La aplicación estará disponible en: https://danielgonzalesarce.github.io/reposteria-/
 
-La aplicación estará disponible en: https://danielgonzalesarce.github.io/reposteria-/
+El despliegue es completamente automático y no requiere intervención manual.
